@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <title>E-Shopee</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">E-Shopee</div>
+      <div class="hamburger-menu"></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="Aboutus.html">About-us</a></li>
+          <li><a href="contact.html">Contact-Us</a></li>
+          <li><a href="orders.html">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- carousel here -->
+    <div class="slider">
+      <input type="radio" name="toggle" id="btn-1" checked />
+      <input type="radio" name="toggle" id="btn-2" />
+      <input type="radio" name="toggle" id="btn-3" />
+
+      <div class="slider-controls">
+        <label for="btn-1"></label>
+        <label for="btn-2"></label>
+        <label for="btn-3"></label>
+      </div>
+
+      <ul class="slides">
+        <li class="slide">
+          <div class="slide-content">
+            <h2 class="slide-title">Discover New Arrivals</h2>
+            <p class="slide-text">
+              Browse our latest collection of trendy and fashionable clothing,
+              accessories, and more. Stay up-to-date with the latest fashion
+              trends and find your perfect style.
+            </p>
+            <a href="#" class="slide-link">Learn more</a>
+          </div>
+          <p class="slide-image">
+            <img src="slide1.gif" alt="stuff" width="320" height="240" />
+          </p>
+        </li>
+        <li class="slide">
+          <div class="slide-content">
+            <h2 class="slide-title">Summer Sale</h2>
+            <p class="slide-text">
+              Get ready for the summer season with our exclusive summer sale.
+              Enjoy huge discounts on swimwear, beach essentials, and outdoor
+              gear. Don't miss out on the best deals!
+            </p>
+            <a href="#" class="slide-link">Amazing deal</a>
+          </div>
+          <p class="slide-image">
+            <img src="slide2.jpeg" alt="stuff" width="320" height="240" />
+          </p>
+        </li>
+        <li class="slide">
+          <div class="slide-content">
+            <h2 class="slide-title">Free Shipping on All Orders</h2>
+            <p class="slide-text">
+              Shop with confidence and take advantage of our free shipping offer
+              on all orders. Get your favorite products delivered right to your
+              doorstep without any additional cost.
+            </p>
+            <a href="#" class="slide-link">Get started</a>
+          </div>
+          <p class="slide-image">
+            <img src="slide3.jpg" alt="stuff" width="320" height="240" />
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="products">
+      <h2>Featured Products</h2>
+      <div id="products-container">
+        <!-- Products from API will be dynamically rendered here -->
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            Bringing you the best products for your everyday needs, delivered
+            with quality and care.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: info@example.com</p>
+          <p>Phone: +1234567890</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-media">
+            <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+            <a href="#"><img src="twitter.png" alt="Twitter" /></a>
+            <a href="#"><img src="instagram.png" alt="Instagram" /></a>
+          </div>
+        </div>
+      </div>
+      <p>&copy; 2023 My E-Commerce Store. All rights reserved.</p>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

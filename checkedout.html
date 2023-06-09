@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <title>E-Shopee - Order Successful</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .success-text {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        animation: scaleAnimation 1s ease-in-out infinite alternate;
+      }
+
+      .continue-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .continue-button:hover {
+        background-color: #555;
+      }
+
+      @keyframes scaleAnimation {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.2);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="success-text">Your Order is Successful!</h1>
+      <a href="index.html" class="continue-button"
+        >Click here to head back to the home page and continue shopping</a
+      >
+    </div>
+  </body>
+</html>

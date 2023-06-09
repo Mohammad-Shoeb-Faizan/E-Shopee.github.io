@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <title>E-Shopee - Orders</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li:first-child {
+        margin-left: 0;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav ul li a:hover {
+        background-color: #555;
+      }
+
+      .orders {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 1rem;
+      }
+
+      .orders h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .order-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+      }
+
+      .order-image {
+        width: 100px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 20px;
+      }
+
+      .order-details {
+        flex-grow: 1;
+      }
+
+      .order-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .order-price {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .order-quantity {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .order-quantity-controls {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .quantity-label {
+        margin-right: 10px;
+      }
+
+      .quantity-control-button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #ccc;
+        border: none;
+        cursor: pointer;
+      }
+
+      .total {
+        text-align: right;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .checkout-button {
+        display: block;
+        width: 80%;
+        margin: 2rem;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .checkout-button:hover {
+        background-color: #555;
+      }
+
+      .orders-container p {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">E-Shopee</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="Aboutus.html">About-Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="orders">
+      <h2>Your Orders</h2>
+      <div class="orders-container">
+        <!-- Orders will be dynamically rendered here -->
+      </div>
+
+      <a class="checkout-button" onclick="checkout()"
+        >Checkout
+        <div class="total">Total: $<span id="total-price">0.00</span></div>
+      </a>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", displayOrders);
+
+      function displayOrders() {
+        const ordersContainer = document.querySelector(".orders-container");
+        const totalPriceElement = document.querySelector("#total-price");
+
+        // Getting the cart items from local storage
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Checking if there are any items in the cart
+        if (cartItems.length === 0) {
+          const noOrdersMessage = document.createElement("p");
+          noOrdersMessage.textContent = "No orders found.";
+          ordersContainer.appendChild(noOrdersMessage);
+          return;
+        }
+
+        // Rendering the cart items
+        renderCartItems();
+
+        // Calculating and updating the total price
+        updateTotalPrice();
+
+        // Adding event listeners to the quantity controls
+        addQuantityControlListeners();
+
+        function renderCartItems() {
+          // Clearing the existing content
+          ordersContainer.innerHTML = "";
+
+          // Looping through the cart items and creating elements for each item
+          cartItems.forEach((item) => {
+            const orderItem = document.createElement("div");
+            orderItem.classList.add("order-item");
+
+            const orderImage = document.createElement("img");
+            orderImage.classList.add("order-image");
+            orderImage.src = item.image;
+            orderImage.alt = "Product Image";
+            orderItem.appendChild(orderImage);
+
+            const orderDetails = document.createElement("div");
+            orderDetails.classList.add("order-details");
+
+            const orderTitle = document.createElement("h3");
+            orderTitle.classList.add("order-title");
+            orderTitle.textContent = item.title;
+            orderDetails.appendChild(orderTitle);
+
+            const orderPrice = document.createElement("p");
+            orderPrice.classList.add("order-price");
+            orderPrice.textContent = `Price: $${item.price}`;
+            orderDetails.appendChild(orderPrice);
+
+            const orderQuantity = document.createElement("p");
+            orderQuantity.classList.add("order-quantity");
+            orderQuantity.textContent = `Quantity: ${item.quantity}`;
+            orderDetails.appendChild(orderQuantity);
+
+            const orderQuantityControls = document.createElement("div");
+            orderQuantityControls.classList.add("order-quantity-controls");
+
+            const quantityLabel = document.createElement("span");
+            quantityLabel.classList.add("quantity-label");
+            quantityLabel.textContent = "Quantity:";
+            orderQuantityControls.appendChild(quantityLabel);
+
+            const decrementButton = document.createElement("button");
+            decrementButton.classList.add("quantity-control-button");
+            decrementButton.textContent = "-";
+            orderQuantityControls.appendChild(decrementButton);
+
+            const quantityValue = document.createElement("span");
+            quantityValue.textContent = item.quantity;
+            orderQuantityControls.appendChild(quantityValue);
+
+            const incrementButton = document.createElement("button");
+            incrementButton.classList.add("quantity-control-button");
+            incrementButton.textContent = "+";
+            orderQuantityControls.appendChild(incrementButton);
+
+            orderDetails.appendChild(orderQuantityControls);
+
+            orderItem.appendChild(orderDetails);
+            ordersContainer.appendChild(orderItem);
+          });
+        }
+
+        function updateTotalPrice() {
+          const totalPrice = cartItems.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+          );
+          totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+
+        function addQuantityControlListeners() {
+          const decrementButtons = document.querySelectorAll(
+            ".order-quantity-controls button:first-child"
+          );
+          const incrementButtons = document.querySelectorAll(
+            ".order-quantity-controls button:last-child"
+          );
+
+          decrementButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+              if (cartItems[index].quantity > 1) {
+                cartItems[index].quantity--;
+                updateCartItems();
+                updateTotalPrice();
+              }
+            });
+          });
+
+          incrementButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+              cartItems[index].quantity++;
+              updateCartItems();
+              updateTotalPrice();
+            });
+          });
+        }
+
+        function updateCartItems() {
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+          renderCartItems();
+        }
+      }
+      function checkout() {
+        // Clean up and Redirection
+        localStorage.removeItem("cartItems");
+        window.location.href = "checkedout.html";
+      }
+    </script>
+  </body>
+</html>

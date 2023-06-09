@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <title>About Us - E-Shopee</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li:first-child {
+        margin-left: 0;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav ul li a:hover {
+        background-color: #555;
+      }
+
+      .about-us {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 1rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .about-us h2 {
+        margin-bottom: 20px;
+      }
+
+      .about-us p {
+        line-height: 1.5;
+      }
+
+      .about-us:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #3f87a6, #ebf8e1, #f69d3c, #3f87a6);
+        background-size: 400% 400%;
+        animation: gradient 10s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">E-Shopee</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="orders.html">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="about-us">
+      <h2>About E-Shopee</h2>
+      <p>
+        Welcome to E-Shopee, your one-stop destination for online shopping. We
+        are dedicated to providing you with a seamless and enjoyable shopping
+        experience right from the comfort of your own home.
+      </p>
+      <p>
+        At E-Shopee, we believe in offering a wide range of high-quality
+        products at competitive prices. Whether you're looking for the latest
+        fashion trends, electronics, home appliances, or any other category,
+        we've got you covered.
+      </p>
+      <p>
+        Our team is committed to ensuring that you receive excellent customer
+        service and prompt delivery of your orders. We strive to make your
+        online shopping experience convenient, secure, and enjoyable.
+      </p>
+      <p>
+        Thank you for choosing E-Shopee as your preferred online shopping
+        destination. We look forward to serving you and exceeding your
+        expectations.
+      </p>
+    </div>
+  </body>
+</html>
